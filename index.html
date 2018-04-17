@@ -55,7 +55,7 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 	
-	L.tileLayer('./{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
+	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
 
     var windSpeed = L.leafletGeotiff(
             url='tif/ph25021.tif',
