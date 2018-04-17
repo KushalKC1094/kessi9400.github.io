@@ -57,7 +57,11 @@
 	var overlayMaps= {"Soil PH": lyr1, "Soil Organic matter":lyr2, "Soil TN":lyr3};
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif'
+    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
+				     options={band:0,
+					      name:'Wind direction',
+					      veector:true,
+					     }
 				    );
 	
 	/*var Organicmat = L.leafletGeotiff(url='tif/OM2501.tif',
