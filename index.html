@@ -57,13 +57,22 @@
 	var overlayMaps= {"Soil PH": lyr1, "Soil Organic matter":lyr2, "Soil TN":lyr3};
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
+    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif'
+				    );
+	
+	/*var Organicmat = L.leafletGeotiff(url='tif/OM2501.tif',
 				    options={band: 0,
-					     name: 'Wind direction',
+					     name: 'Organic matter',
 					     vector:true,
 					    }
 				    );
-        
+	
+        var TN = L.leafletGeotiff(url='tif/TN2501.tif',
+				    options={band: 0,
+					     name: 'TN',
+					     vector:true,
+					    }
+				    );*/
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
             options={band: 0,
@@ -86,7 +95,7 @@
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
         document.getElementById("windSpeedValue").innerHTML = windSpeed.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-        document.getElementById("windDirectionValue").innerHTML = windDirection.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(0);
+        
     });
    
 </script>  
