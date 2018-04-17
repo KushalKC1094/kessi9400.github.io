@@ -60,21 +60,21 @@
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
-				     options={band:0,
+				     options={band:1,
 					      name:'Soil PH',
 					      veector:true,
 					     }
 				    );
 	
 	var Organicmat = L.leafletGeotiff(url='tif/OM2501.tif',
-				    options={band: 0,
+				    options={band: 1,
 					     name: 'Organic matter',
 					     vector:true,
 					    }
 				    );
 	
         var TN = L.leafletGeotiff(url='tif/TN2501.tif',
-				    options={band: 0,
+				    options={band: 1,
 					     name: 'TN',
 					     vector:true,
 					    }
