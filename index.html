@@ -13,8 +13,8 @@
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
        
         
-        Ph at clicked point is <span id="windSpeedValue">?</span></p>
-      <!--  Wind direection at clicked point is <span id="windDirectionValue">?</span></p>-->
+        Ph at clicked point is <span id="PHValue">?</span></p>
+      <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
         
     </div>
     <div id="mapid" style="width:70%; height:100%;float:left;"></div>   
@@ -57,9 +57,9 @@
 	var overlayMaps= {"Soil PH": lyr1, "Soil Organic matter":lyr2, "Soil TN":lyr3};
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
+    var PH = L.leafletGeotiff(url='tif/ph25021.tif',
 				     options={band:0,
-					      name:'Wind direction',
+					      name:'Soil PH',
 					      veector:true,
 					     }
 				    );
@@ -98,7 +98,7 @@
         } else {
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
-        document.getElementById("windSpeedValue").innerHTML = windSpeed.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
         
     });
    
