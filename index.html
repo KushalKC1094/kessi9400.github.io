@@ -9,7 +9,7 @@
 
 <div >
     <div style="width:30%;float:left;">
-        <h1>Soil Ph</h1>
+        <h1>Soil Properties</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
        
         
@@ -100,9 +100,9 @@
         } else {
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
-        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
-	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
+        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng);
+	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng);
+	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng);
         
     });
    
