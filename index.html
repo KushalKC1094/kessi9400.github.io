@@ -9,12 +9,13 @@
 
 <div >
     <div style="width:30%;float:left;">
-        <h1>Soil Ph</h1>
+        <h1>Soil Properties</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
        
-        
-        Ph at clicked point is <span id="windSpeedValue">?</span></p>
-      <!--  Wind direection at clicked point is <span id="windDirectionValue">?</span></p>-->
+        Ph at clicked point is <span id="PHValue">?</span></p>  
+	Organic matter content at clicked point is <span id="OrganicValue">?</span></p> 
+        Total Nitrogen at clicked point is <span id="TNValue">?</span></p> 
+      <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
         
     </div>
     <div id="mapid" style="width:70%; height:100%;float:left;"></div>   
@@ -50,15 +51,33 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 	
-	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
+     var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr3=  L.tileLayer('TN/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+	
+	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3};
+	L.control.layers(null, overlayMaps).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
+    var PH = L.leafletGeotiff(url='tif/ph25021.tif',
+				     options={band:0,
+					      name:'Soil PH',
+					      veector:true,
+					     }
+				    );
+	
+	var Org = L.leafletGeotiff(url='tif/OM2501.tif',
 				    options={band: 0,
-					     name: 'Wind direction',
+					     name: 'Organic matter',
 					     vector:true,
 					    }
 				    );
-        
+	
+        var TN = L.leafletGeotiff(url='tif/TN2501.tif',
+				    options={band: 0,
+					     name: 'Total Nitrogen',
+					     vector:true,
+					    }
+				    );
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
             options={band: 0,
@@ -80,9 +99,14 @@
         } else {
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
-        document.getElementById("windSpeedValue").innerHTML = windSpeed.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-        document.getElementById("windDirectionValue").innerHTML = windDirection.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(0);
+	    
+	    
+        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+	document.getElementById("OrganicValue").innerHTML = Org.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
+        
     });
    
+	
 </script>  
  
