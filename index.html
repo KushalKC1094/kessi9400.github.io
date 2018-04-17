@@ -12,9 +12,9 @@
         <h1>Soil Properties</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
        
-        
+        Organic matter content at clicked point is <span id="OrganicValue">?</span></p>
         Ph at clicked point is <span id="PHValue">?</span></p>  
-	Organic matter content at clicked point is <span id="OrganicValue">?</span></p> 
+	 
         TN at clicked point is <span id="TNValue">?</span></p> 
       <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
         
@@ -100,8 +100,10 @@
         } else {
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
+	    
+	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);    
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
+	
 	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
         
     });
