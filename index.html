@@ -60,21 +60,21 @@
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
-				     options={band:1,
+				     options={band:0,
 					      name:'Soil PH',
 					      veector:true,
 					     }
 				    );
 	
 	var Organicmat = L.leafletGeotiff(url='tif/OM2501.tif',
-				    options={band: 1,
+				    options={band: 0,
 					     name: 'Organic matter',
 					     vector:true,
 					    }
 				    );
 	
         var TN = L.leafletGeotiff(url='tif/TN2501.tif',
-				    options={band: 1,
+				    options={band: 0,
 					     name: 'TN',
 					     vector:true,
 					    }
@@ -101,8 +101,8 @@
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
+	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
         
     });
    
