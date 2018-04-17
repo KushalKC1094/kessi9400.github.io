@@ -11,13 +11,8 @@
     <div style="width:30%;float:left;">
         <h1>Soil Ph</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
-        Select a color scale 
-        <select onchange="changeColorScale(this)">
-            <option selected="" value="rainbow">Rainbow</option>
-            <option value="viridis">Viridis</option>
-            <option value="greys">Greys</option>
-        </select>
-        3 <img id="colorScaleImage" src="" style="vertical-align: middle; height:20px; width:200px;"/>8</p>
+       
+        
         Ph at clicked point is <span id="windSpeedValue">?</span></p>
       <!--  Wind direection at clicked point is <span id="windDirectionValue">?</span></p>-->
         
@@ -57,19 +52,12 @@
 	
 	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(
-            url='tif/ph25021.tif',
-            options={band: 0,
-                displayMin: 3,
-                displayMax: 9,
-                name: 'Wind speed',
-                colorScale: 'rainbow',
-                clampLow: false,
-                clampHigh: true,
-                //vector:true,
-                arrowSize: 20,
-            }
-        ).addTo(mymap);
+    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
+				    options={band: 0,
+					     name: 'Wind direction',
+					     vector:true,
+					    }
+				    );
         
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
@@ -85,7 +73,6 @@
             }
         ).addTo(mymap);*/
 
-    document.getElementById('colorScaleImage').setAttribute('src',windSpeed.colorScaleData);
     
     mymap.on('click', function(e) {        
         if (!marker) {
