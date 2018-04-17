@@ -14,7 +14,8 @@
        
         
         Ph at clicked point is <span id="PHValue">?</span></p>  
-	Organic matter content at clicked point is <span id="OrganicValue">?</span></p>
+	Organic matter content at clicked point is <span id="OrganicValue">?</span></p> 
+        TN at clicked point is <span id="TNValue">?</span></p> 
       <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
         
     </div>
@@ -101,6 +102,7 @@
         }
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
 	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
         
     });
    
