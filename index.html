@@ -57,7 +57,7 @@
 	
 	L.tileLayer('./{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
 
-    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif').addTo(mymap);
+    var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif');
         
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
