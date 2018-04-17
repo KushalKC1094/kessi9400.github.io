@@ -50,7 +50,12 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 	
-	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""}).addTo(mymap);
+     var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr3=  L.tileLayer('TN/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+	
+	var overlayMaps= {"Soil PH": lyr1, "Soil Organic matter":lyr2, "Soil TN":lyr3};
+	L.control.layers(null, overlayMaps).addTo(mymap);
 
     var windSpeed = L.leafletGeotiff(url='tif/ph25021.tif',
 				    options={band: 0,
