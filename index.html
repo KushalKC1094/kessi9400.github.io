@@ -100,7 +100,7 @@
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
-	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(0);
+	document.getElementById("OrganicValue").innerHTML = Organicmat.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
         
     });
    
