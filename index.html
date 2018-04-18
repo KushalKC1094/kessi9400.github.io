@@ -1,3 +1,6 @@
+<html>
+<body style="background-color:#bfff80;">
+	
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
    
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -7,20 +10,41 @@
 
 <script src="leaflet-geotiff.js"></script>
 
+<style>
+ul{
+font: bold 15 px Arial;
+    list-style-type: circle;
+	margin:10;
+}
+h1.ex1 {
+font: bold 30px Georgia, serif;
+background-color:#355C7D;
+color:White;
+}
+p.ex2{
+font: bold 20px arial, sans-serif;
+
+}
+li{
+margin: 10px;
+}
+</style>
 <div >
     <div style="width:30%;float:left;">
-        <h1>Soil Properties</h1>
+        <h1 class="ex1">Soil Properties in Terai</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
-       
-        Ph at clicked point is <span id="PHValue">?</span></p>  
-	Organic matter content at clicked point is <span id="OrganicValue">?</span></p> 
-        Total Nitrogen at clicked point is <span id="TNValue">?</span></p> 
-      <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
-        
+      
+<p class="ex2"> At Clicked Point</p>	  
+<ul>
+  <li>Ph is <span id="PHValue">?</span></li>
+  <li>Organic matter is <span id="OrganicValue">?</span></li>
+  <li>Total Nitrogen is <span id="TNValue">?</span></li>
+</ul>
+	   
     </div>
     <div id="mapid" style="width:70%; height:100%;float:left;"></div>   
 </div>
-
+	
 <script>    
     var toggleClip = function () {
         var newClipMask = windSpeed.options.clip ? undefined : clipMask;
