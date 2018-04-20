@@ -85,6 +85,7 @@ margin: 10px;
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
 				     options={band:0,
 					      name:'Soil PH',
+					      vector:true,
 					      
 					     }
 				    );
@@ -92,6 +93,7 @@ margin: 10px;
 	var Org = L.leafletGeotiff(url='tif/OM2501.tif',
 				    options={band: 0,
 					     name: 'Organic matter',
+					     vector:true,
 					     
 					    }
 				    );
@@ -99,7 +101,7 @@ margin: 10px;
         var TN = L.leafletGeotiff(url='tif/TN2501.tif',
 				    options={band: 0,
 					     name: 'Total Nitrogen',
-					     
+					     vector:true,
 					    }
 				    );
     /*var windDirection = L.leafletGeotiff(
