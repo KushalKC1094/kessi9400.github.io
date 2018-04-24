@@ -39,6 +39,8 @@ margin: 10px;
   <li>Ph is <span id="PHValue">?</span></li>
   <li>Organic matter is <span id="OrganicValue">?</span></li>
   <li>Total Nitrogen is <span id="TNValue">?</span></li>
+  <li>Total Nitrogen is <span id="ClayValue">?</span></li>
+   <li>Total Nitrogen is <span id="BoronValue">?</span></li>
 </ul>
 	   
     </div>
@@ -78,6 +80,8 @@ margin: 10px;
      var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr3=  L.tileLayer('TN/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr4=  L.tileLayer('Clay/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr5=  L.tileLayer('Boron/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
 	
 	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3};
 	L.control.layers(null, overlayMaps).addTo(mymap);
@@ -101,6 +105,19 @@ margin: 10px;
         var TN = L.leafletGeotiff(url='tif/TN2501.tif',
 				    options={band: 0,
 					     name: 'Total Nitrogen',
+					     vector:true,
+					    }
+				    );
+	
+	var Clay = L.leafletGeotiff(url='tif/clay2501',
+				    options={band: 0,
+					     name: 'Clay Content',
+					     vector:true,
+					    }
+				    );
+	var Boron = L.leafletGeotiff(url='tif/B2501',
+				    options={band: 0,
+					     name: 'Boron Content',
 					     vector:true,
 					    }
 				    );
@@ -130,6 +147,8 @@ margin: 10px;
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
 	document.getElementById("OrganicValue").innerHTML = Org.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
 	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
+	document.getElementById("ClayValue").innerHTML = Clay.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
+	document.getElementById("BoronValue").innerHTML = Boron.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
         
     });
    
