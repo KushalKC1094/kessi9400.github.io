@@ -1,3 +1,6 @@
+<html>
+<body style="background-color:#4ABDAC;">
+	
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
    
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -7,20 +10,43 @@
 
 <script src="leaflet-geotiff.js"></script>
 
+<style>
+ul{
+font: bold 15 px Arial;
+    list-style-type: circle;
+	margin:10;
+}
+h1.ex1 {
+font: bold 30px Georgia, serif;
+background-color:#355C7D;
+color:White;
+}
+p.ex2{
+font: bold 20px arial, sans-serif;
+
+}
+li{
+margin: 10px;
+}
+</style>
 <div >
     <div style="width:30%;float:left;">
-        <h1>Soil Properties</h1>
+        <h1 class="ex1">Soil Properties in Terai</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
-       
-        Ph at clicked point is <span id="PHValue">?</span></p>  
-	Organic matter content at clicked point is <span id="OrganicValue">?</span></p> 
-        Total Nitrogen at clicked point is <span id="TNValue">?</span></p> 
-      <!--  PH at clicked point is <span id="windDirectionValue">?</span></p>-->
-        
+      
+<p class="ex2"> At Clicked Point</p>	  
+<ul>
+  <li>Ph is <span id="PHValue">?</span></li>
+  <li>Organic matter is <span id="OrganicValue">?</span></li>
+  <li>Total Nitrogen is <span id="TNValue">?</span></li>
+  <li>Clay Content is <span id="ClayValue">?</span></li>
+   <li>Boron Content is <span id="BoronValue">?</span></li>
+</ul>
+	   
     </div>
     <div id="mapid" style="width:70%; height:100%;float:left;"></div>   
 </div>
-
+	
 <script>    
     var toggleClip = function () {
         var newClipMask = windSpeed.options.clip ? undefined : clipMask;
@@ -41,7 +67,7 @@
         clipMask[i][1] = tmp;
     }
     
-    var mymap = L.map('mapid').setView([28, 80], 6);
+    var mymap = L.map('mapid').setView([28, 84], 6);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -54,14 +80,17 @@
      var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr3=  L.tileLayer('TN/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr4=  L.tileLayer('Clay/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+     var lyr5=  L.tileLayer('Boron/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
 	
-	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3};
+	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3, "Clay Content":lyr4, "Boron Content":lyr5};
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
 				     options={band:0,
 					      name:'Soil PH',
-					      veector:true,
+					      vector:true,
+					      
 					     }
 				    );
 	
@@ -69,6 +98,7 @@
 				    options={band: 0,
 					     name: 'Organic matter',
 					     vector:true,
+					     
 					    }
 				    );
 	
@@ -78,6 +108,20 @@
 					     vector:true,
 					    }
 				    );
+	
+	var Clay = L.leafletGeotiff(url='tif/clay2501',
+				    options={band: 0,
+					     name: 'Clay Content',
+					     vector:true,
+					    }
+				    );
+	var Boron = L.leafletGeotiff(url='tif/B2501',
+				    options={band: 0,
+					     name: 'Boron Content',
+					     vector:true,
+					    }
+				    );
+	
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
             options={band: 0,
@@ -104,6 +148,8 @@
         document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
 	document.getElementById("OrganicValue").innerHTML = Org.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
 	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
+	document.getElementById("ClayValue").innerHTML = Clay.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
+	document.getElementById("BoronValue").innerHTML = Boron.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
         
     });
    
