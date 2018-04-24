@@ -83,7 +83,7 @@ margin: 10px;
      var lyr4=  L.tileLayer('Clay/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr5=  L.tileLayer('Boron/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
 	
-	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3};
+	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3, "Clay Content":lyr4, "Boron Content":lyr5};
 	L.control.layers(null, overlayMaps).addTo(mymap);
 
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
@@ -121,6 +121,7 @@ margin: 10px;
 					     vector:true,
 					    }
 				    );
+	
     /*var windDirection = L.leafletGeotiff(
             url='tif/wind_direction.tif',
             options={band: 0,
