@@ -11,10 +11,7 @@
 <script src="leaflet-geotiff.js"></script>
 
 <style>
-ul{
-font: bold 15 px Arial;
-	margin:10;
-}
+
 h1.ex1 {
 font: 35px Century Gothic, sans-serif;
 background-color:#355C7D;
@@ -24,10 +21,11 @@ p.ex2{
 font: bold 30px Courier;
 
 }
-li{
+p.ex3{
 font: 20px Calibri;
 margin: 20px;
 }
+
 </style>
 <div >
     <div style="width:30%;float:left;">
@@ -35,13 +33,11 @@ margin: 20px;
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
       
 <p class="ex2"> At Clicked Point <img src="icon.jpg" alt ="location icon" width="30" height="30"></p> 	  
-<ul>
-  <li>PH is <span id="PHValue">?</span></li>4<img src="Legends/Ph_legend.PNG" alt= "legend" width="120" height="25">9
-  <li>Organic Matter is <span id="OrganicValue">?</span> %</li> 0<img src="Legends/Organicmat_legend.PNG" alt= "legend" width="120" height="25">7
-  <li>Total Nitrogen is <span id="TNValue">?</span> %</li>0<img src="Legends/TN_legend.PNG" alt= "legend" width="120" height="25">0.8
-  <li>Clay Content is <span id="ClayValue">?</span> %</li> 3<img src="Legends/Clay_legend.PNG" alt= "legend" width="120" height="25">73
-   <li>Boron Content is <span id="BoronValue">?</span> ppm</li>0 <img src="Legends/Boron_legend.PNG" alt= "legend" width="120" height="25">32
-</ul>
+  <p class="ex3">PH is <span id="PHValue">?</span></p>4<img src="Legends/Ph_legend.PNG" alt= "legend" width="120" height="25">9
+  <p class="ex3">Organic Matter is <span id="OrganicValue">?</span> %</p> 0<img src="Legends/Organicmat_legend.PNG" alt= "legend" width="120" height="25">7
+  <p class="ex3">Total Nitrogen is <span id="TNValue">?</span> %</p>0<img src="Legends/TN_legend.PNG" alt= "legend" width="120" height="25">0.8
+  <p class="ex3">Clay Content is <span id="ClayValue">?</span> %</p> 3<img src="Legends/Clay_legend.PNG" alt= "legend" width="120" height="25">73
+   <p class="ex3">Boron Content is <span id="BoronValue">?</span> ppm</p>0 <img src="Legends/Boron_legend.PNG" alt= "legend" width="120" height="25">32
 	   
     </div>
     <div id="mapid" style="width:70%; height:100%;float:left;"></div>   
