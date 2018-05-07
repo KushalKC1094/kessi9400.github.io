@@ -146,7 +146,7 @@ margin: 20px;
         }
 	    
 	    
-        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(0);
+        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
 	document.getElementById("OrganicValue").innerHTML = Org.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
 	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
 	document.getElementById("ClayValue").innerHTML = Clay.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
