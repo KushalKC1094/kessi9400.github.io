@@ -2,8 +2,11 @@
 <body style="background-color:White;">
 	
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+<link rel="stylesheet" href="css/L.Control.Locate.min.css">
+<link rel="stylesheet" href="css/leaflet.css">
    
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="js/L.Control.Locate.min.js"></script>
 <!-- <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script> -->
 <script src="vendor/geotiff.js"></script>
 <script src="vendor/plotty.js"></script>
@@ -35,7 +38,7 @@ margin: 20px;
         <h1 class="ex1">Soil Properties in Terai</h1>
         <!--Clip the image using a polygon <button type="button" onclick="toggleClip()">Toggle</button></p>-->
       
-<p class="ex2"> At Clicked Point <img src="icon.jpg" alt ="location icon" width="30" height="30"></p> 	  
+<p class="ex2"> At Clicked Point <img src="icon.png" alt ="location icon" width="20" height="30"></p> 	  
 <ul>
   <li>PH is <span id="PHValue">?</span></li>4<img src="Legends/Ph_legend.PNG" alt= "legend" width="120" height="25">9
   <li>Organic Matter is <span id="OrganicValue">?</span> %</li> 0<img src="Legends/Organicmat_legend.PNG" alt= "legend" width="120" height="25">7
@@ -69,6 +72,7 @@ margin: 20px;
     }
     
     var mymap = L.map('mapid').setView([28, 84], 6);
+	
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -77,6 +81,8 @@ margin: 20px;
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
+	
+	L.control.locate().addTo(mymap);
 	
      var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
