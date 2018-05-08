@@ -97,6 +97,7 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
                 fillOpacity: 0.15,
                 weight: 2,
                 opacity: 0.5
+				
             },
             /** Inner marker style properties. Only works if your marker class supports `setStyle`. */
             markerStyle: {
