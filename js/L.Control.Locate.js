@@ -160,6 +160,7 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
             },
             /** The default options passed to leaflets locate method. */
             locateOptions: {
+		enableHighAccuracy: true,
                 maxZoom: Infinity,
                 watch: true,  // if you overwrite this, visualization cannot be updated
                 setView: false // have to set this to false because we have to
