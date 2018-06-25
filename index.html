@@ -165,19 +165,32 @@ margin: 20px;
 ]
 }
 
-L.geoJSON(geojsonFeature).addTo(mymap);
 
-	
 	L.control.locate().addTo(mymap);
+	
+	function style(feature) {
+    return {
+        opacity: 0.5,
+        color: 'black',
+        fillOpacity: 0
+    };
+}
 	
      var lyr1=	L.tileLayer('SoilPH/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr2=  L.tileLayer('Organicmatter/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr3=  L.tileLayer('TN/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr4=  L.tileLayer('Clay/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
      var lyr5=  L.tileLayer('Boron/{z}/{x}/{y}.png', {tms: true, opacity: 0.7, attribution: ""});
+	 
+	 var lyr=L.geoJSON(geojsonFeature,{style:style});
+	 
+	 var baseMaps = {"Nepal Districts":lyr}; 
 	
 	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3, "Clay Content":lyr4, "Boron Content":lyr5};
-	L.control.layers(null, overlayMaps).addTo(mymap);
+	L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+	
+	
+
 
     var PH = L.leafletGeotiff(url='tif/ph25021.tif',
 				     options={band:0,
@@ -228,7 +241,8 @@ L.geoJSON(geojsonFeature).addTo(mymap);
                 arrowSize: 20,
             }
         ).addTo(mymap);*/
-
+		
+		var popup = L.popup()
     
     mymap.on('click', function(e) {        
         if (!marker) {
@@ -238,9 +252,9 @@ L.geoJSON(geojsonFeature).addTo(mymap);
             marker.setLatLng([e.latlng.lat,e.latlng.lng]);
         }
 		
+	 
 	    
-	    
-        document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
+    document.getElementById("PHValue").innerHTML = PH.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(1);
 	document.getElementById("OrganicValue").innerHTML = Org.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(2);
 	document.getElementById("TNValue").innerHTML = TN.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
 	document.getElementById("ClayValue").innerHTML = Clay.getValueAtLatLng(e.latlng.lat,e.latlng.lng).toFixed(3);
