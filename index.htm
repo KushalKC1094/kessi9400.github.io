@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Fixed Menu Example - Semantic</title>
+  <title>Soil Map</title>
   
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
 <link rel="stylesheet" href="css/L.Control.Locate.css">
@@ -78,7 +78,7 @@
         <img class="logo" src="Template_files/logo.png">
         Soil Map
       </a>
-      <a href="#" class="item">Home</a>
+      <a href="#" class="item">About</a>
       <a href="#" class="item">Legend</a>
     </div>
   </div>
@@ -206,7 +206,7 @@ var value = L.control({position:'topleft'});
 	value.update = function (props) {
 		this._div.innerHTML = '<div style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;"><h4>CLICK IN MAP</h4>'+'<p>PH is <span id="PHValue">_</span></p>'+
 		'<p>Organic Content is <span id="OrganicValue">_</span> %</p>'+
-        '<p>Total Nitrogen is<span id="TNValue">_</span> %</p>'+
+        '<p>Total Nitrogen is <span id="TNValue">_</span> %</p>'+
         '<p>Clay Content is <span id="ClayValue">_</span> %</p>'+
         '<p>Boron Content is <span id="BoronValue">_</span> ppm</p>	'	
 	};
