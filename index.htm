@@ -9,6 +9,13 @@
   <!-- Site Properties -->
   <title>Soil Map</title>
   
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="semantic/semantic.min.js"></script>
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
 <link rel="stylesheet" href="css/L.Control.Locate.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -72,10 +79,10 @@
 </head>
 <body>
 
-  <div class="ui inverted attached stackable menu">
+  <div class="ui inverted attached stackable menu" style="height:10vh">
     <div class="ui container">
       <a class="header item">
-        <img class="logo" src="Template_files/logo.png">
+        <i class="database icon"></i>
         Soil Map
       </a>
       <a href="#" class="item">About</a>
@@ -85,7 +92,7 @@
   
   
 
-  <div class="ui container" id="mapid" style="width:100%; height:100%;float:right;">
+  <div class="ui container" id="mapid" style="width:100%; height:70vh;">
   </div>
 
  <!-- <div class="topleft"style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;">
@@ -99,11 +106,10 @@
   
   
   
- <!--<div class="ui inverted vertical footer segment">
+ <div class="ui inverted vertical footer segment" style="margin: 0 !important; height:12vh">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
-      
-      <div class="ui inverted section divider"></div>
+
       <div class="ui horizontal inverted small divided link list">
         <a class="item" href="#">Site Map</a>
         <a class="item" href="#">Contact Us</a>
@@ -112,7 +118,7 @@
       </div>
     </div>
   </div>
-  </div>-->
+  </div>
 
 
 <script>
@@ -169,10 +175,13 @@
 
 	var imagerySet = "Aerial";
     var bingAerial = new L.BingLayer("Ai8ObqAyrMuxpOG9xhf3Gz-5TK1Pt_oR4wPvnj6VO3ysuS7RzLYAOdlCLIBFDh6s",{type: imagerySet});
+	var none =L.tileLayer('');
 
 	var baseMaps = {
     "Bing Aerial":bingAerial,
 	"OpenStreetMap":OSM,
+	"None":none,
+	
 };
 	var overlayMaps= {"Soil PH": lyr1, "Organic matter":lyr2, "Total Nitrogen":lyr3, "Clay Content":lyr4, "Boron Content":lyr5};
 	L.control.layers(baseMaps, overlayMaps).addTo(mymap);
@@ -204,11 +213,11 @@ var value = L.control({position:'topleft'});
 	};
 
 	value.update = function (props) {
-		this._div.innerHTML = '<div style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;"><h4>CLICK IN MAP</h4>'+'<p>PH is <span id="PHValue">_</span></p>'+
-		'<p>Organic Content is <span id="OrganicValue">_</span> %</p>'+
-        '<p>Total Nitrogen is <span id="TNValue">_</span> %</p>'+
-        '<p>Clay Content is <span id="ClayValue">_</span> %</p>'+
-        '<p>Boron Content is <span id="BoronValue">_</span> ppm</p>	'	
+		this._div.innerHTML = '<div style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;"><h4>CLICK ON MAP</h4>'+'<p style="font-weight:bold;">Get Soil Values</p>'+'<p>PH: <span id="PHValue">_</span></p>'+
+		'<p>Organic Content: <span id="OrganicValue">_</span> %</p>'+
+        '<p>Total Nitrogen: <span id="TNValue">_</span> %</p>'+
+        '<p>Clay Content: <span id="ClayValue">_</span> %</p>'+
+        '<p>Boron Content: <span id="BoronValue">_</span> ppm</p>	'	
 	};
 
 	value.addTo(mymap);
