@@ -74,12 +74,28 @@
     left: 10px;
     font-weight:bold;
 }
+
+table {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
   </style>
 
 </head>
 <body>
 
-  <div class="ui inverted attached stackable menu" style="height:10vh">
+  <div class="ui inverted attached stackable menu" style="height:9vh">
     <div class="ui container">
       <a class="header item">
         <i class="map icon"></i>
@@ -111,7 +127,7 @@
   
   
 
-  <div class="ui container" id="mapid" style="width:100%; height:70vh; z-index:10">
+  <div class="ui container" id="mapid" style="width:100%; height:69.8vh; z-index:10">
   </div>
 
  <!-- <div class="topleft"style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;">

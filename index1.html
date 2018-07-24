@@ -74,12 +74,27 @@
     left: 10px;
     font-weight:bold;
 }
+table {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
   </style>
 
 </head>
 <body>
 
-  <div class="ui inverted attached stackable menu" style="height:10vh">
+  <div class="ui fixed inverted attached menu" style="height:10vh">
     <div class="ui container">
       <a class="header item">
         <i class="map icon"></i>
@@ -111,17 +126,46 @@
   
 
   
-  <div class="ui main text container" style="width:100%; height:53vh; z-index:10">
+  <div class="ui main stackable text container" style="height:70%;" >
     <h1 class="ui header">Metadata</h1>
     <p>Soil Data was collected from detailed soil survey from pits at 10000 scales. Soil morphological characteristics and properties such as texture, structure, consistency, mottles, porosity, compactness, pH, color, slope and drainage were analyzed in each pit. Texture (sand, silt, clay %), pH, Total N, Available P, Available K, Boron, Zinc and Organic matter were analyzed from physical and chemical analyses of soil samples at soil lab.</p>
     <p style="font-weight:bold;">Methods adopted in Soil sample tests in laboratory</p>
+	<table>
+  <tr>
+    <th>Soil Samples Tests</th>
+    <th>Analysis Methods</th>
+    
+  </tr>
+  <tr>
+    <td>Texture</td>
+    <td>Hydrometer & Texture Classification</td>
+    
+  </tr>
+  <tr>
+    <td>PH</td>
+    <td>1:2 water suspension after calibration of pH meter with Buffer tablet of pH 7 & 4.01</td>
+    
+  </tr>
+  <tr>
+    <td>Organic Matter
+    <td>Modified Walkley and Black method</td>
+    
+  </tr>
+  <tr>
+    <td>Total Nitrogen
+    <td>Micro jeldahl digestion-distillation method</td>
+    
+  </tr>
+  
+</table>
+
     
   </div>
 
  
   
   
- <div class="ui inverted vertical footer segment" style="margin: 0 !important; height:12vh">
+ <div class="ui fixed inverted vertical footer segment" >
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
 
