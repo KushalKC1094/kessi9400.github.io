@@ -82,11 +82,16 @@
   <div class="ui inverted attached stackable menu" style="height:10vh">
     <div class="ui container">
       <a class="header item">
-        <i class="database icon"></i>
+        <i class="map icon"></i>
         Soil Map
       </a>
-	  <a href="index.htm" class="item">Home</a>
-	  <a href="index1.html" class="item">About</a>
+	  <a href="index.htm" class="item">
+	  <i class="home icon"></i>
+	  Home
+	  </a>
+	  <a href="index1.html" class="item">
+	  <i class="info circle icon"></i>
+	  About</a>
       <a href="#" class="ui dropdown item">
 	  Legend<i class="dropdown icon"></i>
 	  <div class="menu" style="z-index: 1000">
@@ -235,7 +240,7 @@ var value = L.control({position:'topleft'});
 	};
 
 	value.update = function (props) {
-		this._div.innerHTML = '<div style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;"><h4>CLICK ON MAP</h4>'+'<p style="font-weight:bold;">Get Soil Values</p>'+'<p>PH: <span id="PHValue">_</span></p>'+
+		this._div.innerHTML = '<div style="background-color:white; padding: 10px; border: solid gray; border-radius:10px;"><h4>CLICK ON MAP <i class="mouse pointer icon"></i></h4>'+'<p style="font-weight:bold;">Get Soil Values</p>'+'<p>PH: <span id="PHValue">_</span></p>'+
 		'<p>Organic Content: <span id="OrganicValue">_</span> %</p>'+
         '<p>Total Nitrogen: <span id="TNValue">_</span> %</p>'+
         '<p>Clay Content: <span id="ClayValue">_</span> %</p>'+
